@@ -43,6 +43,8 @@ public class Solution120812 {
 		int answer = 0;
 		int max = 0;
 		
+		// {1, 3, 2, 3, 2, 1}
+		// {1, 2, 3}
 		HashSet<Integer> hs = new HashSet<Integer>();
 		
 		// 중복 제거
@@ -51,24 +53,29 @@ public class Solution120812 {
 		}
 		
 		// 키에는 해당 숫자, 값에는 카운트가 들어갈 맵 객체 생성
+		// 1=0, 2=0, 3=0
 		HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
 		
 		// 각 키마다 초기값으로 0 세팅
 		for (Integer integer : hs) {
 			hm.put(integer, 0);
 		}
+		
+		// [1, 2, 3, 3, 3, 4]
 		for (int i = 0; i < array.length; i++) {
 			// 입력받은 숫자를 순회하며 해당 키의 값을
 			// 기존 키의 값에 1을 더한 값으로 치환
 			hm.replace(array[i], hm.get(array[i]) + 1);
 		}
 		
+		// 1=1, 2=1, 3=3, 4=1
+		
 		// 키 리스트를 순회하여 최빈값을 찾는 부분
 		for (Integer integer : hm.keySet()) {
 			
 			// 현재 수의 빈도수
 			int current = hm.get(integer);
-			// 최빈값보다 빈도가 많으면
+			// 최빈 빈도수보다 현재 빈도수가 많으면
 			if (max < current) {
 				// 최빈 빈도수를 현재 빈도수로 바꾸고
 				max = current;
