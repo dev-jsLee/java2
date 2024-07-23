@@ -51,11 +51,13 @@ public class StreamCollect {
 		String joinedStr = streamStr.collect(Collectors.joining(", "));
 		System.out.println(joinedStr);
 		
-		
-		
-		
-		
-		
+		System.out.println("==========minBy maxBy===============");
+		intStream1 = Stream.of(1, 4, 9, 3, 2);
+		int min = intStream1
+				.collect(Collectors
+						.minBy((o1, o2) -> o2))
+				.get();
+		System.out.println(min);
 		
 		
 		
